@@ -5,6 +5,12 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     @activities = Activity.all
+    @hash = Gmaps4rails.build_markers(@activities) do |activity, marker|
+    marker.lat activity.latitude
+    marker.lng activity.longitude
+    marker.infowindow activity.name && activity.description
+    # marker.infowindow activity.description
+end
   end
 
   # GET /activities/1
@@ -69,6 +75,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:name, :description, :level, :type, :location_id)
+      params.require(:activity).permit(:name, :description, :level, :game, :address, :latitude, :longitude)
     end
 end

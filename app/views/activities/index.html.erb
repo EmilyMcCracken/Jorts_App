@@ -1,3 +1,4 @@
+
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Activities</h1>
@@ -20,8 +21,8 @@
         <td><%= activity.name %></td>
         <td><%= activity.description %></td>
         <td><%= activity.level %></td>
-        <td><%= activity.type %></td>
-        <td><%= activity.location_id %></td>
+        <td><%= activity.game %></td>
+        <td><%= activity.address %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -33,3 +34,16 @@
 <br>
 
 <%= link_to 'New Activity', new_activity_path %>
+
+<div style='width: 800px;'>
+  <div id="map" style='width: 800px; height: 400px;'></div>
+</div>
+
+<script>
+  handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+  markers = handler.addMarkers(<%=raw @hash.to_json %>);
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
