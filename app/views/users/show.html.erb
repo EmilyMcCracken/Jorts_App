@@ -10,7 +10,30 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>First Name:</strong>
+  <%= @user.profile.fname %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @user.profile.lname %>
+</p>
+
+<p>
+  <strong>Bio:</strong>
+  <%= @user.profile.bio %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @user.profile.question %>
+</p>
+
 <%= image_tag @user.profile.avatar.url(:medium) %>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<br>
+
+<%= link_to 'Edit Account Info', edit_user_path(@user) %> |
+<%= link_to 'Edit Profile Info', edit_profile_path %> |
 <%= link_to 'Back', users_path %>
