@@ -46,15 +46,18 @@
      <%= f.select :attending, ['Yes', 'Maybe']%>
   </div>
   <div>
-    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field(:user_id, :value => @current_user.id)%>
   </div>
   <div class="field">
-    <%= f.hidden_field :activity_id %>
+    <%= f.hidden_field(:activity_id, :value => @activity.id)%>
   </div>
   <div class="actions">
     <%= f.submit "RSVP" %>
   </div>
 <% end %>
+
+
+<h3> Attendees </h3>
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
@@ -68,3 +71,5 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   handler.fitMapToBounds();
 });
 </script>
+
+

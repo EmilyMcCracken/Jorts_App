@@ -25,10 +25,12 @@ class UserActivitiesController < ApplicationController
   # POST /user_activities.json
   def create
     @user_activity = UserActivity.new(user_activity_params)
+    @user_activity.user_id = current_user.id
+    @user_activity.activity_id = params[:user_activity][:activity_id]
 
     respond_to do |format|
       if @user_activity.save
-        format.html { redirect_to @user_activity, notice: 'User activity was successfully created.' }
+        format.html { redirect_to @user_activity, notice: "You have successfully RSVP'd for this event!" }
         format.json { render :show, status: :created, location: @user_activity }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class UserActivitiesController < ApplicationController
   def update
     respond_to do |format|
       if @user_activity.update(user_activity_params)
-        format.html { redirect_to @user_activity, notice: 'User activity was successfully updated.' }
+        format.html { redirect_to @user_activity, notice: 'Your RSVP status has been updated' }
         format.json { render :show, status: :ok, location: @user_activity }
       else
         format.html { render :edit }
