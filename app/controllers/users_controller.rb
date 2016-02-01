@@ -10,7 +10,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @profile = User.find(params[:id])
+    # @profile = User.find(params[:id])
+    # @user 
+      @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
+      marker.lat activity.latitude
+      marker.lng activity.longitude
+      marker.infowindow activity.name && activity.description
+    end
   end
 
   # GET /users/new
