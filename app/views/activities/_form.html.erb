@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :level %><br>
-    <%= f.text_field :level %>
+    <%= f.select :level, ['Casual', 'Mild', 'Intermediate', 'Intense']%>
   </div>
   <div class="field">
     <%= f.label :game %><br>
-    <%= f.text_field :game %>
+    <%= f.select :game, ['Frisbee', 'Football', 'Quizzo', 'Basketball', 'Frisbee Golf', 'Run', 'Bike', 'Kickball', 'Soccer']%>
   </div>
   <div class="field">
     <%= f.label :address %><br>

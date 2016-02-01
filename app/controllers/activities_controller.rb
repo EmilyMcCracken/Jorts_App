@@ -16,6 +16,7 @@ end
   # GET /activities/1
   # GET /activities/1.json
   def show
+    @user_activity = UserActivity.new
   end
 
   # GET /activities/new

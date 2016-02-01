@@ -12,16 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.label :Attending_This_Event %><br>
+     <%= f.select :attending, ['Yes', 'Maybe']%>
+  </div>
+  <div>
+    <%= f.hidden_field :user_id %>
   </div>
   <div class="field">
-    <%= f.label :activity_id %><br>
-    <%= f.number_field :activity_id %>
-  </div>
-  <div class="field">
-    <%= f.label :attending %><br>
-    <%= f.text_field :attending %>
+    <%= f.hidden_field :activity_id %>
   </div>
   <div class="actions">
     <%= f.submit %>
