@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
     self.password_digest = BCrypt::Password.create(password)
   	end
 
-  	# Geocoding by ip_address
 
-  	geocoded_by :ip_address
-	after_validation :geocode
+
+
+
 
 end
