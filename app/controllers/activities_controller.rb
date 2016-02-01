@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
   # GET /activities.json
   def index
     if params[:search].present?
-      @activities = Activity.near(params[:search], 10)
+      @activities = Activity.near(params[:search], 5)
     else
       @activities = Activity.all
     end
