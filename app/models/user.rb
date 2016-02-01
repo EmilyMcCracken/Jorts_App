@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
     self.password_digest = BCrypt::Password.create(password)
   	end
 
+
+
+
+
+
 end

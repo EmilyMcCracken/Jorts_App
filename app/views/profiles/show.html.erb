@@ -20,5 +20,7 @@
   <%= @profile.question %>
 </p>
 
+<%= image_tag @profile.avatar.url(:medium) %>
+
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>
