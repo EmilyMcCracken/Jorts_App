@@ -4,19 +4,31 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    @activities = Activity.all
+    if params[:search].present?
+      @activities = Activity.near(params[:search], 10)
+    else
+      @activities = Activity.all
+    end
+    
     @hash = Gmaps4rails.build_markers(@activities) do |activity, marker|
     marker.lat activity.latitude
     marker.lng activity.longitude
     marker.infowindow activity.name
     # marker.infowindow activity.description
-end
+    end
   end
 
   # GET /activities/1
   # GET /activities/1.json
   def show
     @user_activity = UserActivity.new
+    set_activity
+      @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
+      marker.lat activity.latitude
+      marker.lng activity.longitude
+      marker.infowindow activity.name && activity.description
+      # marker.infowindow activity.description
+      end
   end
 
   # GET /activities/new
