@@ -46,12 +46,15 @@
      <%= f.select :attending, ['Yes', 'Maybe']%>
   </div>
   <div>
-    <%= f.hidden_field :user_id %>
+    <%= f.hidden_field(:user_id, :value => @current_user.id)%>
   </div>
   <div class="field">
-    <%= f.hidden_field :activity_id %>
+    <%= f.hidden_field(:activity_id, :value => @activity.id)%>
   </div>
   <div class="actions">
     <%= f.submit "RSVP" %>
   </div>
 <% end %>
+
+<h3> Attendees </h3>
+
