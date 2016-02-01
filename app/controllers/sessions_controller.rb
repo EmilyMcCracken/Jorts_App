@@ -14,9 +14,22 @@ class SessionsController < ApplicationController
 		end
 	end
 
+	def create_admin
+		@admin = Admin.where(username: params[:username]).first     
+		if @admin && @admin.authenticate(params[:password_digest])
+			session[:admin_id] = @admin.id
+			redirect_to root_path
+			flash[:notice] = "logged in"
+		else
+			flash[:notice] = "please try again!"
+			redirect_to login_path
+		end
+	end
+
 	def destroy
 		if current_user
 		session[:user_id] = nil
+		session[:_id] = nil
 		redirect_to root_path
 		flash[:notice] = "logged out"
 		else
