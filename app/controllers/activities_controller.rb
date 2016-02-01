@@ -8,7 +8,7 @@ class ActivitiesController < ApplicationController
     @hash = Gmaps4rails.build_markers(@activities) do |activity, marker|
     marker.lat activity.latitude
     marker.lng activity.longitude
-    marker.infowindow activity.name && activity.description
+    marker.infowindow activity.name
     # marker.infowindow activity.description
 end
   end
