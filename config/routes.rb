@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :profiles
   resources :users
+  resources :admins
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -14,6 +15,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', as: :login
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy', as: :logout
+  post 'login_admin' => 'sessions#create_admin'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
