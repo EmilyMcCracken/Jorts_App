@@ -10,6 +10,8 @@
   <%= @user.email %>
 </p>
 
+<% if @user.profile != nil %>
+
 <p>
   <strong>First Name:</strong>
   <%= @user.profile.fname %>
@@ -32,8 +34,13 @@
 
 <%= image_tag @user.profile.avatar.url(:medium) %>
 
-<br>
+<% end %>
 
-<%= link_to 'Edit Account Info', edit_user_path(@user) %> |
-<%= link_to 'Edit Profile Info', edit_profile_path %> |
+<br>
+<% if logged_in? || logged_in_admin? %>
+	<% if logged_in_admin? || @user.id == current_user.id  %>
+		<%= link_to 'Edit Account Info', edit_user_path(@user) %> |
+		<%= link_to 'Edit Profile Info', edit_profile_path %> |
+	<% end %>
+<% end %>
 <%= link_to 'Back', users_path %>
