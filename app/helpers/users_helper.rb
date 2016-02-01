@@ -1,6 +1,7 @@
 module UsersHelper
 
-	def location
+def location
+	# Helper to use a ip_address when using a local host.
   if params[:location].blank?
     if Rails.env.test? || Rails.env.development?
       @location ||= Geocoder.search("50.78.167.161").first
