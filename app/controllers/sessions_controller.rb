@@ -27,9 +27,9 @@ class SessionsController < ApplicationController
 	end
 
 	def destroy
-		if current_user
+		if logged_in? || logged_in_admin?
 		session[:user_id] = nil
-		session[:_id] = nil
+		session[:admin_id] = nil
 		redirect_to root_path
 		flash[:notice] = "logged out"
 		else
