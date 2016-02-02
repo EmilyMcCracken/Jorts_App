@@ -4,14 +4,14 @@ class User < ActiveRecord::Base
 	has_many :attending_activities, through: :user_activities, source: :activity
 	has_many :created_activities, through: :activity, source: :activity
 	has_many :user_activities
+	has_many :comments
 
 	# need for bcrypt
 	has_secure_password
 
 	# Validations
-	validates_presence_of :username
-
-	validates_presence_of :email
+	validates :username, presence: true
+	validates :email, presence: true
 
 
 

@@ -23,6 +23,7 @@ class ActivitiesController < ApplicationController
   def show
     @user_activity = UserActivity.new
     set_activity
+    @comment = Comment.new
       @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
       marker.lat activity.latitude
       marker.lng activity.longitude
@@ -78,6 +79,10 @@ class ActivitiesController < ApplicationController
       format.html { redirect_to activities_url, notice: 'Activity was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def joined_user?
+    # <% if activity.users.where("#{current_user.username}") %>
   end
 
   private
