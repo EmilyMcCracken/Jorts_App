@@ -23,6 +23,7 @@ class ActivitiesController < ApplicationController
   def show
     @user_activity = UserActivity.new
     set_activity
+    @comment = Comment.new
       @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
       marker.lat activity.latitude
       marker.lng activity.longitude

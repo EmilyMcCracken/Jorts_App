@@ -83,5 +83,39 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   handler.fitMapToBounds();
 });
 </script>
+  <!-- comment section below -->
+        <div class="commentaddition">
+          <div id="commentaddin">
+          <%= content_tag :h3, "Make a Comment." %>
+          <%= form_for @comment do |f| %>
+          <%= f.label :title %>
+          <%= f.text_field :title %>
+          <br>
+          <br>
+          <%= f.label :body %>
+          <%= f.text_field :body %>
+          <br>
+          <br>
+          <%= f.hidden_field(:activity_id, :value => @activity.id)%>
+          <%= f.submit :create %>
+          <% end %>
+          </div>
+        </div>
+        <div class="commentcontainer">
+          <div id="commentin">
+            <% @activity.comments.each do |comment| %>
+            <p>
+            <%= comment.title %>
+            </p>
+            <br>
+            <%= comment.body %>
+            <br>
+            <%= comment.user.username %>
+            <br>
+              <!-- This conditional makes sure only comment author can delete comment -->
+              <% if comment.user_id == @current_user.id %>
+              <%= link_to("Delete comment", comment_path(comment.id), method: :delete) %>
+              <% end %>
+            <% end %>
 
 
