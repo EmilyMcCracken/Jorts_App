@@ -1,5 +1,6 @@
 class Activity < ActiveRecord::Base
-	has_many :users, through: :user_activities
+	has_many :attending_users, through: :user_activities, source: :user
+	belongs_to :user, foreign_key: "user_id"
 	has_many :user_activities 
 
 	geocoded_by :address

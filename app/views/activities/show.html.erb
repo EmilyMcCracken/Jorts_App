@@ -25,6 +25,12 @@
   <%= @activity.address %>
 </p>
 
+<p>
+  <strong>Created By:</strong>
+  <%= @activity.user.username %>
+</p>
+
+
 <% if logged_in_admin? %>
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
 <%= link_to 'Destroy', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>|
@@ -64,7 +70,7 @@
 
 
 <h3> Attendees </h3>
-<% @activity.users.each do |ua| %>
+<% @activity.attending_users.each do |ua| %>
       <tr>
         <td><%= ua.username %></td>
         <br>

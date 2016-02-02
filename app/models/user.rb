@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 	# relationships with other classes
 	has_one :profile
-	has_many :activities, through: :user_activities
+	has_many :attending_activities, through: :user_activities, source: :activity
+	has_many :created_activities, through: :activity, source: :activity
 	has_many :user_activities
 
 	# need for bcrypt
