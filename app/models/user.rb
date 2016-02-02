@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	has_one :profile
 	has_many :activities, through: :user_activities
 	has_many :user_activities
+	has_many :comments
 
 	# need for bcrypt
 	has_secure_password
