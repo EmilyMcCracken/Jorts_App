@@ -86,28 +86,22 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   <!-- comment section below -->
         <div class="commentaddition">
           <div id="commentaddin">
-          <%= content_tag :h3, "Make a Comment." %>
-          <%= form_for @comment do |f| %>
-          <%= f.label :title %>
-          <%= f.text_field :title %>
-          <br>
-          <br>
-          <%= f.label :body %>
-          <%= f.text_field :body %>
-          <br>
-          <br>
-          <%= f.hidden_field(:activity_id, :value => @activity.id)%>
-          <%= f.submit :create %>
-          <% end %>
+            <% if logged_in_admin? || logged_in? %>
+            <%= content_tag :h3, "Make a Comment." %>
+            <%= form_for @comment do |f| %>
+            <%= f.label :body %>
+            <%= f.text_field :body %>
+            <br>
+            <br>
+            <%= f.hidden_field(:activity_id, :value => @activity.id)%>
+            <%= f.submit :create %>
+            <% end %>
+           <% end %> 
           </div>
         </div>
         <div class="commentcontainer">
           <div id="commentin">
             <% @activity.comments.each do |comment| %>
-            <p>
-            <%= comment.title %>
-            </p>
-            <br>
             <%= comment.body %>
             <br>
             <%= comment.user.username %>
