@@ -30,7 +30,7 @@ class UserActivitiesController < ApplicationController
 
     respond_to do |format|
       if @user_activity.save
-        format.html { redirect_to @user_activity, notice: "You have successfully RSVP'd for this event!" }
+        format.html { redirect_to :back, notice: "You have successfully RSVP'd for this event!" }
         format.json { render :show, status: :created, location: @user_activity }
       else
         format.html { render :new }
