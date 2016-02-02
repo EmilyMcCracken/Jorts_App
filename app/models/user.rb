@@ -8,9 +8,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 
 	# Validations
-	validates_presence_of :username
-
-	validates_presence_of :email
+	validates :username, presence: true
+	validates :email, presence: true
 
 
 
