@@ -65,6 +65,6 @@ class CommentsController < ApplicationController
   private
   def comment_params
     # Strong params below all the title and body to be passed through into the create action above.
-    params.require(:comment).permit(:title, :body, :activity_id)
+    params.require(:comment).permit( :body, :activity_id)
   end
 end

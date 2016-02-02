@@ -81,6 +81,10 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def joined_user?
+    # <% if activity.users.where("#{current_user.username}") %>
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
