@@ -13,3 +13,51 @@
  *= require_tree .
  *= require_self
  */
+
+/*FONTS*/
+ /*font-family: 'Kalam', cursive;*/
+/*font-family: 'Slackey', cursive;*/
+
+/*COLORS*/
+
+
+#content {
+	position: relative;
+	left: 30%;
+}
+
+.welcome {
+	position: relative;
+	float: right;
+}
+
+ul {
+	top: 0;
+	left: 0;
+	position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 300px;
+    background-color: #FD9B08;
+    height: 100%;
+}
+
+li a {
+	font-family: 'Slackey', cursive;
+	font-size: 30px;
+    display: block;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 5px;
+    text-decoration: none;
+    transition: .7s;
+    color: #042920;
+}
+
+li a:hover {
+    background-color: #75995A;
+    color: #FD9B08;
+    transform: rotate(-7deg);
+}
