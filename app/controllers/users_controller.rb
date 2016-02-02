@@ -12,10 +12,10 @@ class UsersController < ApplicationController
   def show
     # @profile = User.find(params[:id])
     # @user 
-      @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
-      marker.lat activity.latitude
-      marker.lng activity.longitude
-      marker.infowindow activity.name && activity.description
+      @hash = Gmaps4rails.build_markers(@user) do |user, marker|
+      marker.lat user.profile.latitude
+      marker.lng user.profile.longitude
+      marker.infowindow user.username 
     end
   end
 
