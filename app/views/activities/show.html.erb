@@ -73,6 +73,9 @@
 <% @activity.attending_users.each do |ua| %>
       <tr>
         <td><%= ua.username %></td>
+        <% if logged_in_admin? || ua.id == current_user.id %>
+        <td><%= link_to 'Destroy', ua, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
         <br>
       </tr>
     <% end %>
