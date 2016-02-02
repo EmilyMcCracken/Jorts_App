@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy', as: :logout
   post 'login_admin' => 'sessions#create_admin'
+  get 'about' => 'users#about', as: :about
 
 
   # Example of regular route:
