@@ -1,0 +1,19 @@
+#landing_page {
+    background-image: url('soccer_field.jpg');
+    margin: 0;
+}
+
+.logo {
+	text-align: center;
+}
+
+
+.jorts_logo {
+	width: 600px;
+	transition: 3s;
+}
+
+.jorts_logo:hover {
+	width: 900px;
+	transform: rotate(-10deg);
+}
