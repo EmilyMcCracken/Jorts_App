@@ -1,61 +1,66 @@
+<body id="profile_page">
 <p id="notice"><%= notice %></p>
-<body id="kalam">
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<div class="profile_content">
+  
+  <div class="avatar">
+    <%= image_tag @user.profile.avatar.url(:medium) %>
+  </div>
+  <p>
+    <strong>Username:</strong>
+    <%= @user.username %>
+  </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
 
-<% if @user.profile != nil %>
+  <% if @user.profile != nil %>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @user.profile.fname %>
-</p>
+  <p>
+    <strong>First Name:</strong>
+    <%= @user.profile.fname %>
+  </p>
 
-<p>
-  <strong>Last Name:</strong>
-  <%= @user.profile.lname %>
-</p>
+  <p>
+    <strong>Last Name:</strong>
+    <%= @user.profile.lname %>
+  </p>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @user.profile.bio %>
-</p>
+  <p>
+    <strong>Bio:</strong>
+    <%= @user.profile.bio %>
+  </p>
 
-<p>
-  <strong>Question:</strong>
-  <%= @user.profile.question %>
-</p>
+  <p>
+    <strong>Question:</strong>
+    <%= @user.profile.question %>
+  </p>
 
-<%= image_tag @user.profile.avatar.url(:medium) %>
 
-<% end %>
+  <% end %>
 
 <br>
 <% if logged_in? || logged_in_admin? %>
 	<% if logged_in_admin? || @user.id == current_user.id  %>
-		<%= link_to 'Edit Account Info', edit_user_path(@user) %> |
-		<%= link_to 'Edit Profile Info', edit_profile_path %> |
+		<%= link_to 'Edit Account Info', edit_user_path(@user), :class => "link_to_buttons" %> |
+		<%= link_to 'Edit Profile Info', edit_profile_path, :class => "link_to_buttons"  %> |
 	<% end %>
 <% end %>
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', users_path, :class => "link_to_buttons"  %>
 
-<div style='width: 400px;'>
-  <div id="map" style='width: 400px; height: 200px;'></div>
+
+<div class="profile_map_container" >
+  <div id="map" class="profile_map">
+  <script>
+    handler = Gmaps.build('Google');
+  handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  });
+  </script>
+  </div>
 </div>
-
-<script>
-  handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
-</script>
-
+</div>
 </body>
