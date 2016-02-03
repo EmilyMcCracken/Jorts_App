@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'home#landing_page', as: :landing_page
+  root 'home#landing_page'
   get 'login' => 'sessions#new', as: :login
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy', as: :logout
