@@ -54,7 +54,7 @@
   <% if logged_in? %>
   <h3> Are you attending this Event? </h3>
   <div class="field">
-     <%= f.select :attending, ['Yes', 'Maybe']%>
+     <%= f.select :attending, ['Yes']%>
   </div>
   <div>
     <%= f.hidden_field(:user_id, :value => @current_user.id)%>
