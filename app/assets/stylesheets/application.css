@@ -25,13 +25,14 @@
 	background-color: rgba(255, 255, 255, .6);;
 	position: relative;
 	left: 30%;
-	width: 800px;
+    width: 800px;
 }
 
 .welcome {
 	position: relative;
 	left: 87%;
-	width: 150px;
+    width: 150px;
+
 }
 
 ul {
@@ -74,6 +75,17 @@ li a {
     box-shadow: 10px 10px 5px black;
 }
 
-#profile_page {
-	background-image: url('soccer_field.jpg')
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
