@@ -27,7 +27,7 @@
 
 <p>
   <strong>Created By:</strong>
-  <%= @activity.user.username %>
+  <%= link_to @activity.user.username, @activity.user, :class => "link_to_buttons" %>
 </p>
 
 
@@ -72,9 +72,9 @@
 <h3> Attendees </h3>
 <% @activity.attending_users.each do |ua| %>
       <tr>
-        <td><%= ua.username %></td>
+        <td><%= link_to ua.username, ua, :class => "link_to_buttons" %></td>
         <% if logged_in_admin? || ua.id == current_user.id %>
-        <td><%= link_to 'Destroy', ua, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', ua, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button" %></td>
         <% end %>
         <br>
       </tr>
@@ -113,11 +113,11 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
             <% @activity.comments.each do |comment| %>
             <%= comment.body %>
             <br>
-            <%= comment.user.username %>
+            <%= link_to comment.user.username, comment.user, :class => "link_to_buttons"  %>
             <br>
               <!-- This conditional makes sure only comment author can delete comment -->
               <% if comment.user_id == @current_user.id %>
-              <%= link_to("Delete comment", comment_path(comment.id), method: :delete) %>
+              <%= link_to("Delete comment", comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button")  %>
               <% end %>
             <% end %>
 

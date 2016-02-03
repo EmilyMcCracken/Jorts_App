@@ -24,12 +24,11 @@
     
     <% @activities.each do |activity| %>
           <tr>
-            <td><%= activity.name %></td>
+            <td><%= link_to activity.name, activity, :class => "link_to_buttons"  %></td>
             <td><%= activity.description %></td>
             <td><%= activity.level %></td>
             <td><%= activity.game %></td>
             <td><%= activity.address %></td>
-            <td><%= link_to 'Show', activity %></td>
           </tr>
     <% end %>
   </tbody>
