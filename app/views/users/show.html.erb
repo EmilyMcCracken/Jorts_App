@@ -3,7 +3,11 @@
 <div class="profile_content">
   
   <div class="avatar">
-    <%= image_tag @user.profile.avatar.url(:medium) %>
+    <% if @user.profile != nil %>
+      <% if @user.profile.avatar != nil %>
+        <%= image_tag @user.profile.avatar.url(:medium) %>
+      <% end %>
+    <% end %>
   </div>
   <p>
     <strong>Username:</strong>
@@ -43,11 +47,15 @@
 <br>
 <% if logged_in? || logged_in_admin? %>
 	<% if logged_in_admin? || @user.id == current_user.id  %>
-		<%= link_to 'Edit Account Info', edit_user_path(@user), :class => "link_to_buttons" %> |
-		<%= link_to 'Edit Profile Info', edit_profile_path, :class => "link_to_buttons"  %> |
+    <% if @user.profile !=nil %>
+  		<%= link_to 'Edit Account Info', edit_user_path(@user), :class => "link_to_buttons" %> |
+  		<%= link_to 'Edit Profile Info', edit_profile_path, :class => "link_to_buttons"  %> |
+    <% else %>
+      <%= link_to 'Edit Account Info', edit_user_path(@user), :class => "link_to_buttons" %> |
+      <%= link_to 'Create Profile', new_profile_path, :class => "link_to_buttons"  %> |
+    <% end %>
 	<% end %>
 <% end %>
-<%= link_to 'Back', users_path, :class => "link_to_buttons"  %>
 
 
 <div class="profile_map_container" >
