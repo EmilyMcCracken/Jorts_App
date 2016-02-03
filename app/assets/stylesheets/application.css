@@ -22,25 +22,29 @@
 
 
 #content {
+	background-color: rgba(255, 255, 255, .6);;
 	position: relative;
 	left: 30%;
+	width: 800px;
 }
 
 .welcome {
 	position: relative;
-	float: right;
+	left: 87%;
+	width: 150px;
 }
 
 ul {
 	top: 0;
 	left: 0;
-	position: absolute;
+	position: fixed;
     list-style-type: none;
     margin: 0;
     padding: 0;
-    width: 300px;
-    background-color: #FD9B08;
+    width: 250px;
+    background-color: #5B8F3F;
     height: 100%;
+    border-right: 5px solid black;
 }
 
 li a {
@@ -49,15 +53,27 @@ li a {
     display: block;
     margin-bottom: 40px;
     padding-bottom: 20px;
-    padding-top: 10px;
+    padding-top: 20px;
     padding-left: 5px;
     text-decoration: none;
     transition: .7s;
     color: #042920;
 }
 
-li a:hover {
-    background-color: #75995A;
+.rotate_right a:hover {
+    background-color: #042920;
     color: #FD9B08;
-    transform: rotate(-7deg);
+    transform: rotate(-10deg);
+    box-shadow: 10px 10px 5px black;
+}
+
+.rotate_left a:hover {
+    background-color: #042920;
+    color: #FD9B08;
+    transform: rotate(10deg);
+    box-shadow: 10px 10px 5px black;
+}
+
+#profile_page {
+	background-image: url('soccer_field.jpg')
 }
