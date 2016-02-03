@@ -8,6 +8,7 @@
     markers = handler.addMarkers(<%=raw @hash.to_json %>);
     handler.bounds.extendWith(markers);
     handler.fitMapToBounds();
+    handler.getMap().setZoom(14)
     });
   </script>
 </div>
@@ -42,9 +43,11 @@
     <%= link_to @activity.user.username, @activity.user, :class => "link_to_buttons" %>
   </p>
 
-  <% if logged_in_admin? || @activity.user.id == current_user.id %>
-  <%= link_to 'Edit', edit_activity_path(@activity) %> |
-  <%= link_to 'Destroy', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>|
+  <% if logged_in_admin? || logged_in? %>
+    <% if logged_in_admin? || @activity.user.id == current_user.id  %>
+      <%= link_to 'Edit', edit_activity_path(@activity) %> |
+      <%= link_to 'Destroy', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>|
+    <% end %> 
   <% end %>
 </div>
 
@@ -86,8 +89,10 @@
           <tr>
             <td><%= link_to ua.username, ua, :class => "link_to_buttons" %></td>
             <br>
-            <% if logged_in_admin? || ua.id == current_user.id %>
-            <td><%= link_to 'Changed Your Mind?', ua, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button" %></td>
+            <% if logged_in_admin? || logged_in? %>
+              <% if logged_in_admin? || ua.id == current_user.id %>
+                <td><%= link_to 'Changed Your Mind?', ua, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button" %></td>
+              <% end %>
             <% end %>
             <br>
           </tr>
@@ -116,9 +121,11 @@
             <%= link_to comment.user.username, comment.user, :class => "link_to_buttons"  %>
             <br>
               <!-- This conditional makes sure only comment author can delete comment -->
-              <% if comment.user_id == @current_user.id %>
-              <%= link_to("Delete comment", comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button")  %>
-              <br>
+              <% if logged_in_admin? || logged_in? %>
+                <% if logged_in_admin? || comment.user_id == @current_user.id %>
+                  <%= link_to("Delete comment", comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button")  %>
+                  <br>
+                <% end %>
               <% end %>
             <% end %>
         </div>    
