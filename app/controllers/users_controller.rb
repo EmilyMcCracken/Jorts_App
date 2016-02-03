@@ -12,10 +12,14 @@ class UsersController < ApplicationController
   def show
     # @profile = User.find(params[:id])
     # @user 
-      @hash = Gmaps4rails.build_markers(@user) do |user, marker|
-      marker.lat user.profile.latitude
-      marker.lng user.profile.longitude
-      marker.infowindow user.username 
+   if @user.profile != nil
+    if @user.profile.address != nil
+        @hash = Gmaps4rails.build_markers(@user) do |user, marker|
+          marker.lat user.profile.latitude
+          marker.lng user.profile.longitude
+          marker.infowindow user.username 
+        end  
+      end
     end
   end
 
@@ -38,6 +42,8 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
+        # Below sends a user an email on sign up. CUrrently recieving and undefined method merge error
+        # UserNotifier.send_signup_email(@user).deliver
         format.html { redirect_to new_profile_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
