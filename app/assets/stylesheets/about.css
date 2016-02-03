@@ -39,6 +39,7 @@ section.module.parallax {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
+  border: 10px black solid;
 }
 
 .other_headers {
