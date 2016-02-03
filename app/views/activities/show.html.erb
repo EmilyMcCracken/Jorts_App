@@ -1,42 +1,52 @@
+<body id="activity_show">
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<div id="map" class="activity_map">
+  <script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    });
+  </script>
+</div>
+
+<p class="activity_name">
   <%= @activity.name %>
 </p>
+<div class="activity_info">
+  <p>
+    <strong>What?</strong>
+    <br>
+    <%= @activity.game %>
+  </p>
+  <p>
+    <strong>Where?</strong>
+    <br>
+    <%= @activity.address %>
+  </p>
+  <p>
+    <strong>Why?</strong>
+    <br>
+    <%= @activity.description %>
+  </p>
+  <p>
+    <strong>How intense?</strong>
+    <br>
+    <%= @activity.level %>
+  </p>
+  <p>
+    <strong>By Who?</strong>
+    <br>
+    <%= link_to @activity.user.username, @activity.user, :class => "link_to_buttons" %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @activity.description %>
-</p>
-
-<p>
-  <strong>Level:</strong>
-  <%= @activity.level %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @activity.game %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @activity.address %>
-</p>
-
-<p>
-  <strong>Created By:</strong>
-  <%= link_to @activity.user.username, @activity.user, :class => "link_to_buttons" %>
-</p>
-
-
-<% if logged_in_admin? %>
-<%= link_to 'Edit', edit_activity_path(@activity) %> |
-<%= link_to 'Destroy', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>|
-<% end %>
-
-<%= link_to 'Back', activities_path %>
+  <% if logged_in_admin? || @activity.user.id == current_user.id %>
+  <%= link_to 'Edit', edit_activity_path(@activity) %> |
+  <%= link_to 'Destroy', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>|
+  <% end %>
+</div>
 
 <%= form_for(@user_activity) do |f| %>
   <% if @user_activity.errors.any? %>
@@ -52,53 +62,46 @@
   <% end %>
   <br>
   <% if logged_in? %>
-  <h3> Are you attending this Event? </h3>
-  <div class="field">
-     <%= f.select :attending, ['Yes']%>
-  </div>
-  <div>
-    <%= f.hidden_field(:user_id, :value => @current_user.id)%>
-  </div>
-  <div class="field">
-    <%= f.hidden_field(:activity_id, :value => @activity.id)%>
-  </div>
-  <div class="actions">
-    <%= f.submit "RSVP" %>
+  <div class="attending">
+    <h3> Are you attending this Event? </h3>
+    <div class="field">
+       <%= f.select :attending, ['Yes']%>
+    </div>
+    <div>
+      <%= f.hidden_field(:user_id, :value => @current_user.id)%>
+    </div>
+    <div class="field">
+      <%= f.hidden_field(:activity_id, :value => @activity.id)%>
+    </div>
+    <div class="actions">
+      <%= f.submit "RSVP" %>
+    </div>
   </div>
 <% end %>
 <% end %>
 
+<div class="attendees">
+  <h3> Attendees </h3>
+    <% @activity.attending_users.each do |ua| %>
+          <tr>
+            <td><%= link_to ua.username, ua, :class => "link_to_buttons" %></td>
+            <br>
+            <% if logged_in_admin? || ua.id == current_user.id %>
+            <td><%= link_to 'Changed Your Mind?', ua, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button" %></td>
+            <% end %>
+            <br>
+          </tr>
+  <% end %>
+</div>      
 
-<h3> Attendees </h3>
-<% @activity.attending_users.each do |ua| %>
-      <tr>
-        <td><%= link_to ua.username, ua, :class => "link_to_buttons" %></td>
-        <% if logged_in_admin? || ua.id == current_user.id %>
-        <td><%= link_to 'Destroy', ua, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button" %></td>
-        <% end %>
-        <br>
-      </tr>
-    <% end %>
 
-<div style='width: 800px;'>
-  <div id="map" style='width: 800px; height: 400px;'></div>
-</div>
 
-<script>
-  handler = Gmaps.build('Google');
-handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-  markers = handler.addMarkers(<%=raw @hash.to_json %>);
-  handler.bounds.extendWith(markers);
-  handler.fitMapToBounds();
-});
-</script>
   <!-- comment section below -->
         <div class="commentaddition">
-          <div id="commentaddin">
             <% if logged_in_admin? || logged_in? %>
-            <%= content_tag :h3, "Make a Comment." %>
+            <%= content_tag :h3, "Chat about this event!" %>
             <%= form_for @comment do |f| %>
-            <%= f.label :body %>
+            <%= f.label :Sup? %>
             <%= f.text_field :body %>
             <br>
             <br>
@@ -106,19 +109,20 @@ handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
             <%= f.submit :create %>
             <% end %>
            <% end %> 
-          </div>
         </div>
         <div class="commentcontainer">
-          <div id="commentin">
             <% @activity.comments.each do |comment| %>
-            <%= comment.body %>
-            <br>
+            <%= comment.body %> <span> - </span>
             <%= link_to comment.user.username, comment.user, :class => "link_to_buttons"  %>
             <br>
               <!-- This conditional makes sure only comment author can delete comment -->
               <% if comment.user_id == @current_user.id %>
               <%= link_to("Delete comment", comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button")  %>
+              <br>
               <% end %>
             <% end %>
+        </div>    
+
+</body>            
 
 
