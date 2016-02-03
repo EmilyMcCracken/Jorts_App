@@ -44,7 +44,7 @@ ul {
     width: 250px;
     background-color: #5B8F3F;
     height: 100%;
-    border-right: 5px solid black;
+    border-right: 8px solid black;
 }
 
 li a {
@@ -62,14 +62,14 @@ li a {
 
 .rotate_right a:hover {
     background-color: #042920;
-    color: #FD9B08;
+    color: #0098BE;
     transform: rotate(-10deg);
     box-shadow: 10px 10px 5px black;
 }
 
 .rotate_left a:hover {
     background-color: #042920;
-    color: #FD9B08;
+    color: #0098BE;
     transform: rotate(10deg);
     box-shadow: 10px 10px 5px black;
 }
