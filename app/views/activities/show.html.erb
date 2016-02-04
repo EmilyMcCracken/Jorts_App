@@ -40,15 +40,20 @@
   <p>
     <strong>By Who?</strong>
     <br>
-    <%= link_to @activity.user.username, @activity.user, :class => "link_to_buttons" %>
-  </p>
-
-  <% if logged_in_admin? || logged_in? %>
-    <% if logged_in_admin? || @activity.user.id == current_user.id  %>
-      <%= link_to 'Edit', edit_activity_path(@activity) %> |
-      <%= link_to 'Destroy', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>|
+    <% if @activity.user != nil %>
+      <%= link_to @activity.user.username, @activity.user, :class => "link_to_buttons" %>
+    <% else %>
+      <p>Classified</p>
     <% end %> 
-  <% end %>
+  </p>
+  <% if @activity.user != nil %>
+    <% if logged_in_admin? || logged_in? %>
+      <% if logged_in_admin? || @activity.user.id == current_user.id  %>
+        <%= link_to 'Edit', edit_activity_path(@activity) %> |
+        <%= link_to 'Destroy', @activity, method: :delete, data: { confirm: 'Are you sure?' } %>|
+      <% end %> 
+    <% end %>
+  <% end %>  
 </div>
 
 <%= form_for(@user_activity) do |f| %>
@@ -118,7 +123,11 @@
         <div class="commentcontainer">
             <% @activity.comments.each do |comment| %>
             <%= comment.body %> <span> - </span>
-            <%= link_to comment.user.username, comment.user, :class => "link_to_buttons"  %>
+            <% if comment.user != nil %>
+              <%= link_to comment.user.username, comment.user, :class => "link_to_buttons"  %>
+            <% else %>  
+              <p>Anonymouse</p>
+            <% end %>  
             <br>
               <!-- This conditional makes sure only comment author can delete comment -->
               <% if logged_in_admin? || logged_in? %>
