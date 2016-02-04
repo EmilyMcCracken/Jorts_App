@@ -1,4 +1,4 @@
-namespace :deleteAct do
+# namespace :deleteAct do
 	desc "Destroy all activites past their end time"
 	task :endact => :environment do
 		@activity = Activity.all
@@ -9,4 +9,4 @@ namespace :deleteAct do
 			end
 		end
 	end
-end
+# end
