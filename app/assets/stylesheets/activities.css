@@ -12,6 +12,8 @@
     position: relative;
     top: 10px;
     left: 25%;
+    border: 3px solid black;
+    box-shadow: 10px 10px 5px black;
 }
 .activity_info {
 	text-align: center;
@@ -25,8 +27,7 @@
 .activity_name {
 	font-size: 64px;
     font-family:'Kalam', cursive;
-    color: #042920;
-
+    color: #F44207;
     text-align: center;
 }
 
@@ -66,7 +67,7 @@
 .act_list {
 	border-spacing: 35px;
 	position: relative;
-	left: 25%;
+	left: 18%;
 }
 
 .new_act_title {
@@ -111,4 +112,25 @@
   background-color: #68A348;
   color: #AFD5F7; }
 
+.attending_container {
+    text-align: center;
+    border: solid 3px black;
+    width: 300px;
+    height: 150px;
+    border-radius: 20px 0px 20px 0px;
+    background: rgba(0, 38, 98, 0.8);
+    color: white;
+    margin-left: 30%;
+}
+
+.attending_list_container {
+    margin-top: 10px;
+    text-align: center;
+    border: solid 3px black;
+    width: 400px;
+    border-radius: 20px 0px 20px 0px;
+    background: rgba(0, 38, 98, 0.8);
+    color: white;
+    margin-left: 25%;
+}
 

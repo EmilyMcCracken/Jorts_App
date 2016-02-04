@@ -20,6 +20,17 @@
 
 /*COLORS*/
 
+.login_error {
+    color: red;
+}
+
+.admin_login {
+    color: DarkBlue;
+}
+
+.login_header {
+    font-family:'Kalam', cursive;
+}
 
 #content {
 	background-color: rgba(255, 255, 255, .6);;

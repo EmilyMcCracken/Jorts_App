@@ -8,4 +8,5 @@ class Activity < ActiveRecord::Base
 	after_validation :geocode, :if => :address_changed?
 
 	validates_presence_of :name, :level, :game, :address
+	validates :name, length: { maximum: 25 }
 end
