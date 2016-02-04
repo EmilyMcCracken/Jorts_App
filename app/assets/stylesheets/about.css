@@ -40,6 +40,7 @@ section.module.parallax {
   background-attachment: fixed;
   background-size: cover;
   border: 10px black solid;
+  box-shadow: 10px 10px 5px black;
 }
 
 .other_headers {
