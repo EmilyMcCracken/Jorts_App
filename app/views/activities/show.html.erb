@@ -28,6 +28,17 @@
     <%= @activity.address %>
   </p>
   <p>
+    <strong>Starting</strong>
+    <br>
+    <%= @activity.start_time %>
+  </p>
+  <p>
+    <strong>Starting</strong>
+    <br>
+    <%= @activity.end_time %>
+  </p>
+  
+  <p>
     <strong>Why?</strong>
     <br>
     <%= @activity.description %>
@@ -37,14 +48,12 @@
     <br>
     <%= @activity.level %>
   </p>
-  <p>
+  <% if @activity.user != nil %>
+    <p>
     <strong>By Who?</strong>
     <br>
-    <% if @activity.user != nil %>
-      <%= link_to @activity.user.username, @activity.user, :class => "link_to_buttons" %>
-    <% else %>
-      <p>Classified</p>
-    <% end %> 
+    <%= link_to @activity.user.username, @activity.user, :class => "link_to_buttons" %>
+  <% end %> 
   </p>
   <% if @activity.user != nil %>
     <% if logged_in_admin? || logged_in? %>
