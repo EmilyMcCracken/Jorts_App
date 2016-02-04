@@ -4,6 +4,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
+    
     if params[:search].present?
       @activities = Activity.near(params[:search], 5)
     else
@@ -93,6 +94,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:name, :description, :level, :game, :address, :latitude, :longitude, :user_id)
+      params.require(:activity).permit(:name, :description, :level, :game, :address, :latitude, :longitude, :user_id, :start_time, :end_time)
     end
 end
