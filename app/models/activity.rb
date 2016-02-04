@@ -9,4 +9,13 @@ class Activity < ActiveRecord::Base
 
 	validates_presence_of :name, :level, :game, :address
 	validates :name, length: { maximum: 25 }
+
+	# validates :date_time_future, :true 
+
+	def date_time_future
+		# Trying to validate a start time not in the past.
+		if :start_time < Time.now
+			return false
+		end
+	end
 end

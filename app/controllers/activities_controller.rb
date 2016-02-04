@@ -87,6 +87,16 @@ class ActivitiesController < ApplicationController
     # <% if activity.users.where("#{current_user.username}") %>
   end
 
+  def auto_act_delete
+    @activity = Activity.all
+    @activity.each do |act|
+      if act.end_time < Time.now
+        puts "Deleting #{act.name}"
+        act.destroy
+      end
+    end
+  end  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
