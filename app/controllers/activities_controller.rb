@@ -75,6 +75,7 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/1
   # DELETE /activities/1.json
   def destroy
+    # <td><%= link_to 'Changed Your Mind?', user_activity_path(@user_activity), method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button" %></td>
     @activity.destroy
     respond_to do |format|
       format.html { redirect_to activities_url, notice: 'Activity was successfully destroyed.' }

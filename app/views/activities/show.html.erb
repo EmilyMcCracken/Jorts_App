@@ -28,12 +28,12 @@
     <%= @activity.address %>
   </p>
   <p>
-    <strong>Starting</strong>
+    <strong>Starting At..</strong>
     <br>
     <%= @activity.start_time %>
   </p>
   <p>
-    <strong>Starting</strong>
+    <strong>Until About..</strong>
     <br>
     <%= @activity.end_time %>
   </p>
@@ -65,24 +65,16 @@
   <% end %>  
 </div>
 
+<div class="attending_container">
 <%= form_for(@user_activity) do |f| %>
-  <% if @user_activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user_activity.errors.count, "error") %> prohibited this user_activity from being saved:</h2>
-
-      <ul>
-      <% @user_activity.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <br>
   <% if logged_in? %>
   <div class="attending">
-    <h3> Are you attending this Event? </h3>
+    <h3> RSVP to this Activity! </h3>
+    <div>
+      <%= f.submit "RSVP", :class => "RSVP_button" %>
+    </div>
     <div class="field">
-       <%= f.select :attending, ['Yes']%>
+       <%= f.hidden_field(:attending, :value => "Yes") %>
     </div>
     <div>
       <%= f.hidden_field(:user_id, :value => @current_user.id)%>
@@ -90,13 +82,12 @@
     <div class="field">
       <%= f.hidden_field(:activity_id, :value => @activity.id)%>
     </div>
-    <div class="actions">
-      <%= f.submit "RSVP" %>
-    </div>
   </div>
 <% end %>
 <% end %>
+</div>
 
+<div class="attending_list_container">
 <div class="attendees">
   <h3> Attendees </h3>
     <% @activity.attending_users.each do |ua| %>
@@ -105,13 +96,13 @@
             <br>
             <% if logged_in_admin? || logged_in? %>
               <% if logged_in_admin? || ua.id == current_user.id %>
-                <td><%= link_to 'Changed Your Mind?', ua, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button" %></td>
               <% end %>
             <% end %>
             <br>
           </tr>
   <% end %>
 </div>      
+</div>
 
 
 

@@ -56,7 +56,7 @@ section.module.parallax {
 
 .name {
   font-family: 'Alegreya Sans SC', sans-serif;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 38, 98, 0.8);;
   font-size: 100px;
   line-height: 300px;
   font-weight: 700;
@@ -78,11 +78,11 @@ section.module.parallax {
 }
 
 section.module.parallax-1 {
-  background-image: url("soccer_field.jpg");
+  background-image: url("basketball_court.jpg");
 }
 section.module.parallax-2 {
   background-image: url("table_soccer.jpg");
 }
 section.module.parallax-3 {
-  background-image: url("soccer_field.jpg");
+  background-image: url("bike_field.jpg");
 }

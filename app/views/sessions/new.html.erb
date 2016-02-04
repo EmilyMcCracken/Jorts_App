@@ -1,4 +1,9 @@
 <div class="login_form">
+    <div class="login_error">
+        <p> 
+            There seems to be an issue with your credentials. Please try again. 
+        <p>
+    </div>
 <h3 class="login_header"> User Login </h3>
 <%= form_tag("/login", method: "post") do %>    
     <%= text_field_tag(:username, nil, :class => 'login_form_top', :placeholder => 'Last Name') %> 
@@ -9,6 +14,11 @@
     <%= submit_tag "log in", :class => 'login_button' %>
     <% end %>
 	<br><br>
+        <div class="admin_login">
+        <p> 
+            If you're an Admin, please login here. 
+        <p>
+    </div>
     <h3 class="login_header"> Admin Login</h3>
 	<%= form_tag("/login_admin", method: "post") do %>    
     <%= text_field_tag(:username, nil, :class => 'login_form_top', :placeholder => 'Last Name') %> 
