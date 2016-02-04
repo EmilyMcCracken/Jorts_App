@@ -1,3 +1,5 @@
+<body id="profile_form">
+  <div class="profile_container">
 <%= form_for(@profile) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
@@ -11,15 +13,15 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :fname %><br>
+    <%= f.label :First_Name %><br>
     <%= f.text_field :fname %>
   </div>
   <div class="field">
-    <%= f.label :lname %><br>
+    <%= f.label :Last_Name %><br>
     <%= f.text_field :lname %>
   </div>
   <div class="field">
-    <%= f.label :bio %><br>
+    <%= f.label :Bio %><br>
     <%= f.text_area :bio %>
   </div>
   <div class="field">
@@ -27,14 +29,16 @@
     <%= f.text_field :question %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
+    <%= f.label :Address %><br>
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :avatar %><br>
+    <%= f.label :Avatar %><br>
     <%= f.file_field :avatar %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
+</body>

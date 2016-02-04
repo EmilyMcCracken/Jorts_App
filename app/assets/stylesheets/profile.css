@@ -1,0 +1,22 @@
+#profile_form {
+    background-image: url('basketball_court.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-size: cover;
+    padding: 20px;
+
+}
+
+.profile_container {
+    font-size: 26px;
+    font-family:'Kalam', cursive;
+    color: #042920;
+}
+
+.profile_header {
+    font-size: 34px;
+    font-family:'Kalam', cursive;
+    color: #042920;
+    padding-top: 20px;
+}
