@@ -12,10 +12,10 @@ class Activity < ActiveRecord::Base
 
 	# validates :date_time_future, :true 
 
-	def date_time_future
-		# Trying to validate a start time not in the past.
-		if :start_time < Time.now
-			return false
-		end
-	end
+	# def date_time_future
+	# 	# Trying to validate a start time not in the past.
+	# 	if :start_time < Time.now
+	# 		return false
+	# 	end
+	# end
 end
