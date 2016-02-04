@@ -56,6 +56,7 @@
   <% end %>  
 </div>
 
+<div class="attending_container"
 <%= form_for(@user_activity) do |f| %>
   <% if @user_activity.errors.any? %>
     <div id="error_explanation">
@@ -71,9 +72,12 @@
   <br>
   <% if logged_in? %>
   <div class="attending">
-    <h3> Are you attending this Event? </h3>
+    <h3> RSVP to this Activity! </h3>
+    <div>
+      <%= f.submit "RSVP", :class => "RSVP_button" %>
+    </div>
     <div class="field">
-       <%= f.select :attending, ['Yes']%>
+       <%= f.hidden_field(:attending, :value => "Yes") %>
     </div>
     <div>
       <%= f.hidden_field(:user_id, :value => @current_user.id)%>
@@ -81,13 +85,12 @@
     <div class="field">
       <%= f.hidden_field(:activity_id, :value => @activity.id)%>
     </div>
-    <div class="actions">
-      <%= f.submit "RSVP" %>
-    </div>
   </div>
 <% end %>
 <% end %>
+</div>
 
+<div class="attending_list"
 <div class="attendees">
   <h3> Attendees </h3>
     <% @activity.attending_users.each do |ua| %>

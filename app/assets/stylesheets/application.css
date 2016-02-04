@@ -32,8 +32,19 @@
 	position: relative;
 	left: 87%;
     width: 150px;
-
+    font-family:'Kalam', cursive;
+    font-size: 20px;
+    padding-bottom: 5px;
 }
+
+.nav_logo {
+    width: 250px;
+}
+
+.nav_logo:hover {
+    transform: rotate(5deg);
+}
+
 
 ul {
 	top: 0;
