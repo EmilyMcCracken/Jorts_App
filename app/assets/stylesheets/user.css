@@ -45,3 +45,26 @@
     text-decoration: underline;
     color: #0098BE;
 }
+
+#sign_up_form {
+    background-image: url('run_group.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-size: cover;
+    padding: 20px;
+
+}
+
+.sign_up_container {
+    font-size: 26px;
+    font-family:'Kalam', cursive;
+    color: #042920;
+}
+
+.new_user_title {
+    font-size: 34px;
+    font-family:'Kalam', cursive;
+    color: #042920;
+    padding-top: 20px;
+}
