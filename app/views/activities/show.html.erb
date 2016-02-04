@@ -64,7 +64,7 @@
     <% end %>
   <% end %>  
 </div>
-
+<div class="attending_boxes">
 <div class="attending_container">
 <%= form_for(@user_activity) do |f| %>
   <% if logged_in? %>
@@ -92,7 +92,7 @@
   <h3> Attendees </h3>
     <% @activity.attending_users.each do |ua| %>
           <tr>
-            <td><%= link_to ua.username, ua, :class => "link_to_buttons" %></td>
+            <td><%= link_to ua.username, ua, :class => "other_link" %></td>
             <br>
             <% if logged_in_admin? || logged_in? %>
               <% if logged_in_admin? || ua.id == current_user.id %>
@@ -103,10 +103,12 @@
   <% end %>
 </div>      
 </div>
+</div>
 
 
 
   <!-- comment section below -->
+  <div class="comments_all">
         <div class="commentaddition">
             <% if logged_in_admin? || logged_in? %>
             <%= content_tag :h3, "Chat about this event!" %>
@@ -137,7 +139,8 @@
                 <% end %>
               <% end %>
             <% end %>
-        </div>    
+        </div>
+      </div>    
 
 </body>            
 

@@ -28,6 +28,7 @@
 .avatar {
     float: left;
     padding: 10px;
+    height: 300px;
 }
 
 .avatar img {
@@ -39,6 +40,17 @@
     text-decoration: none;
     color: #042920;
     transition: .7s;
+}
+
+.other_link {
+    text-decoration: none;
+    color: white;
+    transition: .7s;
+}
+
+.other_link:hover {
+    text-decoration: underline;
+    color: #0098BE;
 }
 
 .link_to_buttons:hover {
