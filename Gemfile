@@ -25,7 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'geocoder'
 # Whenever gem used to schedule my rake tasks
-gem 'whenever', :require => false
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'gmaps4rails'

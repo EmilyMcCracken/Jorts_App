@@ -37,7 +37,6 @@
 
 .attendees {
 	text-align: center;
-    color: white;
 }
 
 .commentaddition {
@@ -152,4 +151,6 @@
 #activity_end_time_1i {
     display: none;
 }
+
+
 
