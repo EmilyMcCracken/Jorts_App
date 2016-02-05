@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   # GET /activities
   # GET /activities.json
   def index
-    
+
     if params[:search].present?
       @activities = Activity.near(params[:search], 5)
     else
@@ -12,12 +12,12 @@ class ActivitiesController < ApplicationController
     end
     
     @hash = Gmaps4rails.build_markers(@activities) do |activity, marker|
-    marker.lat activity.latitude
-    marker.lng activity.longitude
-    marker.infowindow activity.name
+      marker.lat activity.latitude
+      marker.lng activity.longitude
+      marker.infowindow activity.name
     # marker.infowindow activity.description
-    end
   end
+end
 
   # GET /activities/1
   # GET /activities/1.json
@@ -25,12 +25,12 @@ class ActivitiesController < ApplicationController
     @user_activity = UserActivity.new
     set_activity
     @comment = Comment.new
-      @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
+    @hash = Gmaps4rails.build_markers(@activity) do |activity, marker|
       marker.lat activity.latitude
       marker.lng activity.longitude
       marker.infowindow activity.name && activity.description
       # marker.infowindow activity.description
-      end
+    end
   end
 
   # GET /activities/new
@@ -46,9 +46,18 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
+    puts @activity.start_time.class
 
+    puts "*********************************"
+    puts @activity.inspect
+
+    @activity.start_time = Time.now
+    @activity.end_time = Time.new
+    puts @activity.inspect
     respond_to do |format|
       if @activity.save
+        puts "*****************CHANGED****************"
+        puts @activity.inspect
         format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
       else
@@ -99,4 +108,4 @@ class ActivitiesController < ApplicationController
     def activity_params
       params.require(:activity).permit(:name, :description, :level, :game, :address, :latitude, :longitude, :user_id, :start_time, :end_time)
     end
-end
+  end

@@ -44,7 +44,11 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+<<<<<<< HEAD
+  gem 'hirb'
+=======
   gem 'sqlite3'
+>>>>>>> 177c27124dbee2333e78467865125d23011dd9fb
 end
 
 group :development do
