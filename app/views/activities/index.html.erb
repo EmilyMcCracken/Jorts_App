@@ -21,6 +21,8 @@
   <% end %>
 
   <h1>Current Activities</h1>
+  <h3> Click any activity to: <h3>
+    <h4> learn more, chat with others or RSVP! </h4>
     
     <table class="act_list">
       <thead>
@@ -40,7 +42,7 @@
           <td><%= activity.game %></td>
           <td><%= link_to activity.name, activity, :class => "link_to_buttons"%></td>
           <td><%= activity.address %></td>
-          <td><%= activity.start_time.strftime("%b %d @ %l:%m %p")%></td>
+          <td><%= activity.start_time.strftime("%b %d @ %l:%M %p")%></td>
         </tr>
       </div>  
     
