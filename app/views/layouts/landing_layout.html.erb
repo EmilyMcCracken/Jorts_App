@@ -11,8 +11,15 @@
   <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/infobox/1.1.9/src/infobox_packed.js' type='text/javascript'></script> <!-- only if you need custom infoboxes -->
 </head>
 <body>
-	<div class = "welcome">        
+<div class = "welcome_landing">        
+      <% if logged_in? -%>Welcome, <%=current_user.username %>
+        <%= link_to("logout", '/logout', method: :delete, class: "logout") %>
+      <% end -%>
+      <% if logged_in_admin? -%>Welcome, <%= current_admin.username %>
+        <%= link_to("logout", '/logout', method: :delete, class: "logout") %>
+      <% end -%> 
       <!-- Log In Form -->
+      <% unless logged_in_admin? || logged_in? %>
         <%= form_tag("/login", method: "post") do %>    
           <%= text_field_tag(:username, nil, :class => 'login_form_top', :placeholder => 'Last Name') %> 
           <%= tag :br %>
@@ -20,8 +27,9 @@
           <%= password_field_tag(:password_digest, nil, :class => 'login_form_bottom', :placeholder => 'Password') %>
           <%= tag :br %>  
           <%= submit_tag "log in", :class => 'login_button' %>
-          <% end %>
-      </div>
+        <% end %>
+    <% end %> 
+    </div>
 
     <%= yield %>
 

@@ -45,9 +45,9 @@ section.module.parallax {
 
 .other_headers {
   font-family: 'Alegreya Sans SC', sans-serif;
-  color: rgba(0, 38, 98, 0.8);
+  color: rgba(244, 66, 7, 0.7);
   font-size: 100px;
-  line-height: 300px;
+  line-height: 200px;
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
@@ -84,5 +84,5 @@ section.module.parallax-2 {
   background-image: url("table_soccer.jpg");
 }
 section.module.parallax-3 {
-  background-image: url("bike_field.jpg");
+  background-image: url("bike_woods.jpg");
 }
