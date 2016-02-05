@@ -2,7 +2,7 @@
 A location based app that allows users to find others in their area to do activities with. From throwing a frisbee around to intense pick-up basketball and even rounds of quizzo... Jorts want to help get you out of the house!  -->
 <h1>Jorts</h1>
 <h3>A different kind of pick up app.</h3>
-<img src="images/jorts_landing.png" alt="">
+<img src="app/assets/images/jorts_landing.png" alt="">
 <p>
 The creators of JORTS, Dylan Weinberger & Emily McCracken, are residents of the Manayunk neighborhood of Philadelphia. Surrounded by green space and a desire to get out of the house but with a schedule that didn't allow participating in regularly scheduled sporting events, Dylan decided this was a problem that needed to be solved. This is where Jorts was ultimately born. Dylan & Emily wanted to create an easy and fun app that would allow users to create activities in their area while other users searched for them and joined. Users choose the type of activity and the level of intensity when creating a new activity.
 
