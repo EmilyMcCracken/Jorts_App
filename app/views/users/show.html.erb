@@ -50,9 +50,11 @@
     <% if @user.profile !=nil %>
   		<%= link_to 'Edit Account Info', edit_user_path(@user), :class => "link_to_buttons" %> |
   		<%= link_to 'Edit Profile Info', edit_profile_path, :class => "link_to_buttons"  %> |
+      <%= link_to 'Delete Your Account?', @user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_account" %>
     <% else %>
       <%= link_to 'Edit Account Info', edit_user_path(@user), :class => "link_to_buttons" %> |
       <%= link_to 'Create Profile', new_profile_path, :class => "link_to_buttons"  %> |
+      <%= link_to 'Delete Your Accont?', @user, method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_account" %>
     <% end %>
 	<% end %>
 <% end %>

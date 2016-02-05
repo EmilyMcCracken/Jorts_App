@@ -80,3 +80,14 @@
     color: #042920;
     padding-top: 20px;
 }
+
+.delete_account {
+    color: #F44207;
+    text-decoration: none;
+    transition: .7s;
+}
+
+.delete_account:hover {
+    text-decoration: underline;
+}
+
