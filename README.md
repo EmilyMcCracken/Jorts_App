@@ -13,7 +13,7 @@ Activities on JORTS range from casual frisbee games to intense pick-up basketbal
 <p>
 	Anyone can join Jorts as a User! You simply need to provide a username, password, and your email address and you are ready to get started! Once you sign up you will be taken to a page to fill out your profile. You can upload a profile picture, your name, a short bio, and your favorite 90's tv show and your address to show how far . If you don't like TV put in your favorite book. Or just leave it blank. Who cares?
 
-	<img src="jorts_profile.png" alt="">
+	<img src="app/assets/images/jorts_profile.png" width="300px">
 
 	Once you are a member you can create new activities, join existing activities, and chat on the activities page.
 </p>
@@ -22,10 +22,10 @@ Activities on JORTS range from casual frisbee games to intense pick-up basketbal
 <p>
 	Activities are the bread and butter of Jorts. Each activity comes with a name, a description a level of intensity and a specific game type from a preloaded list, a time frame, and an address for the activity. You can start searching for activities to join by going to the find an activity page. This page will list all current and upcoming activities as well as a map displaying where these activities are. You can search for a specific address and the map and index will show all activities within a 5 mile radius. You can then click on the name of whatever activity you want to join.
 
-	<img src="activity_create.png" alt="">
+	<img src="app/assets/images/activity_create.png" alt="">
 
 	On the Activity page you will see where the activity is on the map at the top as well as the specific details about the event including the user who created said event. You will also have the option to RSVP for this event as well as look at a list of the current attendees. There will also be a comments section allowing you to chat about the event. All events will be removed from the database after the specified endtime.
 
-	<img src="jorts_activity_show.png" alt="">
+	<img src="app/assets/images/jorts_activity_show.png" alt="">
 </p>
 
