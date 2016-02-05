@@ -124,7 +124,9 @@
         </div>
         <div class="commentcontainer">
             <% @activity.comments.each do |comment| %>
+            <br>
             <%= comment.body %> <span> - </span>
+            <br>
             <% if comment.user != nil %>
               <%= link_to comment.user.username, comment.user, :class => "link_to_buttons"  %>
             <% else %>  
@@ -135,6 +137,7 @@
               <% if logged_in_admin? || logged_in? %>
                 <% if logged_in_admin? || comment.user_id == @current_user.id %>
                   <%= link_to("Delete comment", comment_path(comment.id), method: :delete, data: { confirm: 'Are you sure?' }, :class => "delete_button")  %>
+                  <br>
                   <br>
                 <% end %>
               <% end %>

@@ -46,14 +46,7 @@ end
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
-    puts @activity.start_time.class
 
-    puts "*********************************"
-    puts @activity.inspect
-
-    @activity.start_time = Time.now
-    @activity.end_time = Time.new
-    puts @activity.inspect
     respond_to do |format|
       if @activity.save
         puts "*****************CHANGED****************"
